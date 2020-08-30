@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Created by jt on 12/23/19.
+ */
 @Entity
 public class Publisher {
 
@@ -13,20 +16,39 @@ public class Publisher {
     private Long id;
 
     private String name;
-    private String addressLineOne;
+    private String addressLine1;
     private String city;
     private String state;
-    private String zipcode;
+    private String zip;
 
     public Publisher() {
     }
 
-    public Publisher(String name, String addressLineOne, String city, String state, String zipcode) {
-        this.name = name;
-        this.addressLineOne = addressLineOne;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Publisher publisher = (Publisher) o;
+
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     public Long getId() {
@@ -45,12 +67,12 @@ public class Publisher {
         this.name = name;
     }
 
-    public String getAddressLineOne() {
-        return addressLineOne;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddressLineOne(String addressLineOne) {
-        this.addressLineOne = addressLineOne;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
     public String getCity() {
@@ -69,38 +91,11 @@ public class Publisher {
         this.state = state;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZip() {
+        return zip;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Publisher publisher = (Publisher) o;
-
-        return id != null ? id.equals(publisher.id) : publisher.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", addressLineOne='" + addressLineOne + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                '}';
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }

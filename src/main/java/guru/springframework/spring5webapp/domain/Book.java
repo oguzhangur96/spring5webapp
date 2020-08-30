@@ -4,23 +4,25 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Created by jt on 12/22/19.
+ */
 @Entity
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    private Long id;
 
-    private  String title;
-    private  String isbn;
+    private String title;
+    private String isbn;
 
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns =  @JoinColumn(name = "book_id")
-                ,inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
     public Book() {
-
     }
 
     public Book(String title, String isbn) {
