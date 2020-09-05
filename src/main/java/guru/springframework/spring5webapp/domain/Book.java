@@ -22,12 +22,23 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
+    @ManyToOne
+    private Set<Publisher> publisher = new HashSet<>();
+
     public Book() {
     }
 
     public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
+    }
+
+    public Set<Publisher> getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Set<Publisher> publisher) {
+        this.publisher = publisher;
     }
 
     public Long getId() {
